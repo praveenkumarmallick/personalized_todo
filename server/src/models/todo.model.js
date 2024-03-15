@@ -4,6 +4,7 @@ const TodoSchema = mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+    required: true,
   },
   desc: {
     type: String,
@@ -14,15 +15,9 @@ const TodoSchema = mongoose.Schema({
     default: false,
     required: true,
   },
-  todos: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Todo",
-    },
-  ],
   date: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
 });
 

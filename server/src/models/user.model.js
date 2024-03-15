@@ -1,28 +1,23 @@
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = mongoose.Schema({
   name: {
     type: String,
-    required: true,
-    min: 6,
-    max: 32,
   },
   username: {
     type: String,
     min: 6,
     max: 32,
     required: true,
-    unique: true,
   },
-  email: {
+  password: {
     type: String,
     min: 6,
     max: 32,
     required: true,
-    lowercase: true,
-    unique: true,
   },
-  password: {
+
+  email: {
     type: String,
     min: 6,
     max: 32,
@@ -34,6 +29,10 @@ const UserSchema = new mongoose.Schema({
       ref: "Todo",
     },
   ],
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const User = mongoose.model("User", UserSchema);
